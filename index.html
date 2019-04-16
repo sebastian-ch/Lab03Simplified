@@ -5,7 +5,6 @@
     <title>Lab 03 Sebastian Hancock</title>
     <meta charset="utf-8">
 
-
     <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
         type="text/css">
     <link rel="stylesheet" href="https://unpkg.com/ol-layerswitcher@3.2.0/src/ol-layerswitcher.css" />
@@ -47,10 +46,8 @@
 <body>
 
     <h2>Sebastian Hancock #11841794</h2>
-
     <div id="map" class="map"></div>
     <div class='footer'>This map includes the WMS layer he provided + a WMS layer for US Weather.<br> adds a geojson too</div>
-
 
     <!--JAVASCRIPT PART!-->
     <script type="text/javascript">
@@ -108,7 +105,7 @@
             title: 'Geojson Layer',
             source: new ol.source.Vector({
                projection : 'EPSG:3857',
-               url: 'va.geojson',
+               url: 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries/USA/VA.geo.json',
                format: new ol.format.GeoJSON()
             })
         })
