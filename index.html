@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Lab 03 Sebastian Hancock</title>
+    <meta charset="utf-8">
+
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+        type="text/css">
+    <style>
+        html {
+            background: whitesmoke;
+        }
+        .map {
+            background: whitesmoke;
+            height: 600px;
+            width: 80%;
+            margin: 10px auto 10px auto;
+            border: solid 1px black;
+        }
+
+        h2 {
+            width: 80%;
+            margin: 10px auto 10px auto;
+            text-align: center;
+        }
+    </style>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+
+</head>
+
+<body>
+
+    <h2>Sebastian Hancock #11841794</h2>
+
+    <div id="map" class="map"></div>
+
+    <script type="text/javascript">
+    
+        //openstreetmap overlay wms layer by terrestris
+        var lyr_OSMOverlayWMSbyterrestris_1 = new ol.layer.Tile({
+            source: new ol.source.TileWMS(({
+
+                url: "http://ows.terrestris.de/osm/service?VERSION%3D1.1.1%26",
+                attributions: '<a href="https://ows.terrestris.de/dienste.html">Terrestris</a>',
+                params: {
+                    "LAYERS": "OSM-Overlay-WMS",
+                    "TILED": "true",
+                    "VERSION": "1.1.1"
+                },
+            })),
+            title: "OSM-Overlay",
+            opacity: 1.000000,
+        });
+
+        var usaWeather = new ol.layer.Tile({
+            source: new ol.source.TileWMS(({
+
+                url: "https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi",
+                attributions: "Weather data © 2012 IEM Nexrad",
+                params: {
+                    "LAYERS": 'nexrad-n0r-900913',
+                }
+            })),
+            title: "Weather-USA",
+            opacity: 1.000000,
+        });
+
+        //activation of wms layers			  
+        lyr_OSMOverlayWMSbyterrestris_1.setVisible(true);
+        usaWeather.setVisible(true)
+        var layersList = [lyr_OSMOverlayWMSbyterrestris_1, usaWeather];
+
+
+        var map = new ol.Map({
+            target: 'map',
+            layers: layersList,
+            view: new ol.View({
+                center: ol.proj.fromLonLat([-100.288, 38.265]),
+                zoom: 4.5
+            })
+        });
+    </script>
+</body>
+
+</html>
