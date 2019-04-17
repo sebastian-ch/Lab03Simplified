@@ -1,2 +1,4 @@
 # Lab03Simplified
-because holy shit what is he thinking
+Lab 03 Submission including two WMS layers and a geojson.
+
+Made it simple.
